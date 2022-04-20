@@ -18,7 +18,7 @@ interface IHomePage {
 
 const Home = ({collections}: IHomePage) => {
   return (
-    <div className='w-full h-full bg-sky-800'>
+    <div className='w-full h-screen bg-sky-800'>
       <div className='max-w-7xl mx-auto flex-col py-20 px-10 2xl:px-0 h-screen'>
         <Head>
           <title>NFT Drop</title>
@@ -32,11 +32,11 @@ const Home = ({collections}: IHomePage) => {
         <main className='bg-sky-500 p-10 shadow-xl shadow-rose-400'>
           <div className='grid space-x-3 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
             {collections.map(collection => (
-              <Link href={`/nft/${collection.slug.current}`}>
+              <Link href={`/nft/${collection.slug.current}`} key={collection._id}>
                 <div className='flex flex-col items-center cursor-pointer transition-all duration-200 hover:scale-105 w-full space-x-reverse'>
                   <img 
                     src={urlFor(collection.mainImage).url()}
-                    alt=""
+                    alt="" 
                     className='h-96 w-60 rounded-2xl object-cover'
                   />
                   <div>
@@ -45,7 +45,6 @@ const Home = ({collections}: IHomePage) => {
                   </div>
                 </div>
               </Link>
-
             ))}
           </div>
         </main>
